@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "TryHackMe: Investigating Windows Writeup"
-date: YYYY-MM-DD HH:MM:SS +0000
+date: 2026-05-28
 categories: [Writeups, TryHackMe]
 tags: [dfir, windows, incident-response, blueteam]
 ---
