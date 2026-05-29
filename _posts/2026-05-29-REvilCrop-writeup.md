@@ -77,42 +77,42 @@ Ransomware frequently overwrites the desktop background to ensure the victim not
 
 * **Answer:** `C:\Users\John Coleman\AppData\Local\Temp\hk8.bmp`
 
-### Q10: The attacker left a note for the user on the Desktop; provide the name of the note with the extension.
+### Q10: The attacker left a note for the user on the Desktop; provide the name of the note with the extension. 
 Checking the file system artifacts dropped onto the victim's Desktop reveals a text file template matching the encryption extension format.
 
 ![favorites](/assets/img/TryHackMe/REvilCorp/note.png)
 
 * **Answer:** `t48s39la-readme.txt`
 
-### Q11: The attacker created a folder "Links for United States" under C:\Users\John Coleman\Favorites\ and left a file there. Provide the name of the file.
+### Q11: The attacker created a folder "Links for United States" under C:\Users\John Coleman\Favorites\ and left a file there. Provide the name of the file. 
 Browsing further through the user's profile configuration path under `Favorites\Links for United States` confirms another file targeted and altered by the payload.
 
 ![bytes](/assets/img/TryHackMe/REvilCorp/favorites.png)
 
 * **Answer:** `GobiernoUSA.gov.url.t48s39la`
 
-### Q12: There is a hidden file dropped by the attacker under C:\Users\John Coleman\Desktop\. Provide the full name of the file including the extension and the size of it in bytes.
+### Q12: There is a hidden file that was created on the user's Desktop that has 0 bytes. Provide the name of the hidden file. 
 By checking the **File System** tree under John Coleman's Desktop, we can find a zero-byte tracking/lock artifact deployed during the execution workflow.
 
 ![decryptor](/assets/img/TryHackMe/REvilCorp/bytes.png)
 
 * **Answer:** `d60df740.lock (0 Bytes)`
 
-### Q13: What is the MD5 hash of the decryptor executable placed on the Desktop?
+### Q13: The user downloaded a decryptor hoping to decrypt all the files, but he failed. Provide the MD5 hash of the decryptor file. 
 The actor dropped a dedicated decryptor stub directly onto the Desktop (`d.e.c.r.y.p.tor.exe`) to allow victims to test or apply keys after paying. Selecting this file reveals its MD5 value.
 
 ![decryptor](/assets/img/TryHackMe/REvilCorp/decryptor.png)
 
 * **Answer:** `f617af8c0d276682fdf528bb3e72560b`
 
-### Q14: What is the full URL to the decryptor website that the attacker requested the user to visit?
+### Q14: In the ransomware note, the attacker provided a URL that is accessible through the normal browser in order to decrypt one of the encrypted files for free. The user attempted to visit it. Provide the full URL path. 
 Reviewing the **Browser URL History** and filtering for keywords related to the recovery process flags the external Tor gateway URL left by the binary's network or interaction routine.
 
 ![decrypturl](/assets/img/TryHackMe/REvilCorp/decrypturl.png)
 
 * **Answer:** `http://decryptor.top/644E7C8EFA02FBB7`
 
-### Q15: What are the other two names known for the REvil ransomware group according to MITRE ATT&CK?
+### Q15: What are some three names associated with the malware which infected this host?
 Cross-referencing the threat profile on the official MITRE ATT&CK portal details the structural and historical naming overlaps for this specific Ransomware-as-a-Service (RaaS) entity.
 
 ![names](/assets/img/TryHackMe/REvilCorp/names.png)
