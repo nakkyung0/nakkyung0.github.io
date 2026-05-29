@@ -39,7 +39,7 @@ Get-LocalUser | Sort-Object LastLogon | Select-Object Name, Enabled, SID, LastLo
 ### Question 3: When did John log onto the system last?
 To determine the exact timestamp of the last session for the user `John`, I targeted the specific account metadata directly from the command line. Instead of scrolling through a full user profile output, I piped the results of the `net user` command into `findstr` to isolate the specific string containing the logon timestamp.
 
-```cmd
+```powershell
 net user John | findstr "Last logon"
 ```
 ![NetUserJohn](/assets/img/TryHackMe/THM-investigatingWindows/johnlogon.png)
@@ -85,7 +85,7 @@ Path: C:\TMP\nc.ps1
 **Answer:** `nc.ps1`
 
 ### Question 8: What port did this file listen locally for?
-To analyze the behavior of the `nc.ps1` script (a PowerShell-based Netcat implementation), I inspected the specific arguments of this scheduled task. Checking the runtime parameters revealed that the script was configured to listen locally on port `1348`.
+To analyze the behavior of the `nc.ps1` script, I inspected the specific arguments of this scheduled task. Checking the runtime parameters revealed that the script was configured to listen locally on port `1348`.
 ```powershell
 (Get-ScheduledTask -Taskname "Clean file system").Actions
 ```
@@ -103,7 +103,7 @@ net user Jenny | findstr "Last logon"
 **Answer:** `never`
 
 ### Question 10: At what date did the compromise take place?
-Since the `Clean file system` scheduled task was a confirmed Indicator of Compromise (IoC), I targeted its underlying task file in the Windows filesystem. I checked the exact creation date of the file using PowerShell:
+Since the `Clean file system` scheduled task was a confirmed Indicator of Compromise, I targeted its underlying task file in the Windows filesystem. I checked the exact creation date of the file using PowerShell:
 ```powershell
 (Get-Item "C:\Windows\System32\tasks\Clean file system").CreationTime
 ```
@@ -114,7 +114,7 @@ Since the `Clean file system` scheduled task was a confirmed Indicator of Compro
 ### Question 11: During the compromise, at what time did Windows first assign special privileges to a new logon?
 Since I already knew the exact date of the breach from the previous step, I switched over to the Windows Event Viewer to analyze the authentication logs. I created a custom view targeting the **Security** log and filtered specifically for March 2nd, 2019, to isolate anomalous behavior. 
 
-To pinpoint when elevated privileges were granted, I audited Special privileges assigned to new logon**. Checking the log entry for this event revealed the exact second the elevated session was initiated by the threat actor.
+To pinpoint when elevated privileges were granted, I audited Special privileges assigned to new logon. Checking the log entry for this event revealed the exact second the elevated session was initiated by the threat actor.
 ![Event Viewer Date Filter](/assets/img/TryHackMe/THM-investigatingWindows/eventviewer.png)
 ![securityevent](/assets/img/TryHackMe/THM-investigatingWindows/securityevent.png)
 
