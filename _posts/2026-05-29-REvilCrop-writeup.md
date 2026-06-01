@@ -2,7 +2,7 @@
 layout: post
 title: "TryHackMe: REvil Corp - Walkthrough"
 date: 2026-05-29 12:00:00 +0000
-categories: [Walkthrough, DFIR]
+categories: [Writeups, TryHackMe]
 tags: [tryhackme, redline, REvil, ransomware, incident-response]
 ---
 
