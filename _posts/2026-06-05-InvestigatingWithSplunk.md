@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Splunk Incident Response Writeup: From Remote WMIC Persistence to Obfuscated PowerShell C2"
+title: "TryHackMe: InvestigatingWithSplunk"
 date: 2026-06-05 09:00 +0200
 categories: [Writeups, TryHackMe]
 tags: [splunk, incident-response, powershell, cyberchef, forensics]
