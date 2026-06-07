@@ -4,7 +4,6 @@ title: "TryHackMe Volt Typhoon"
 date: 2026-06-07
 categories: [Writeups, TryHackMe]
 tags: [splunk, volt-typhoon, apt, threat-hunting, spl, dfir, mitre-attack]
-image: /assets/img/TryHackMe/VoltTyphoon/banner.png
 ---
 
 # Volt Typhoon TryHackMe Writeup
