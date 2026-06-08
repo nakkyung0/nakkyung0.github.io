@@ -18,7 +18,7 @@ IronShade is a Linux forensics / incident response room on TryHackMe. The scenar
 **Q: What is the Machine ID of the machine we are investigating?**
 
 ```bash
-hostnametcl
+hostnamectl
 ```
 
 ![Machine ID](/assets/img/TryHackMe/IronShade/machineid.png)
