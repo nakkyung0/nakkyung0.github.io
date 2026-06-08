@@ -26,8 +26,6 @@ nfs
 
 ![Wireshark NFS filter applied](/assets/img/TryHackMe/StolenMount/1.png)
 
-_Filtering by `nfs` reveals NFS-related packets between 10.10.119.157 and 172.16.175.128_
-
 Immediately, the traffic tells a story. We can observe repeated `LOOKUP` and `GETATTR` calls standard NFS operations used to traverse and inspect files on a remote share. The attacker is clearly enumerating the filesystem.
 
 One packet stands out **Frame 164** a `V4 Call` with the path `0x4ffb5beb/creds.tx` highlighted in the Info column. This is a `LOOKUP` operation targeting a file named **`creds.txt`**, a strong indicator that the attacker located and accessed a credentials file.
@@ -44,8 +42,6 @@ To reconstruct the full conversation and extract the raw data transferred, we ri
 
 ![Right-click context menu showing Follow > TCP Stream](/assets/img/TryHackMe/StolenMount/2.png)
 
-_Following the TCP stream lets us see the full raw data exchanged during the NFS session_
-
 This is a crucial step in PCAP forensics. NFS runs over TCP, which means file data is split across many individual packets. By following the stream, Wireshark reassembles all those packets into the complete byte sequence - letting us see the actual content that was transferred between the attacker and the server.
 
 ---
@@ -55,8 +51,6 @@ This is a crucial step in PCAP forensics. NFS runs over TCP, which means file da
 Inside the raw TCP stream, we can make out several interesting strings buried in the binary NFS data:
 
 ![TCP stream showing "Archive Password" label and MD5 hash value](/assets/img/TryHackMe/StolenMount/3.png)
-
-_The stream reveals an archive password label followed immediately by what appears to be an MD5 hash_
 
 Two things jump out:
 
@@ -73,16 +67,12 @@ To extract the embedded ZIP files, we first need the raw bytes from the stream. 
 
 ![Wireshark "Show data as Hex Dump" dropdown](/assets/img/TryHackMe/StolenMount/6.png)
 
-_Switching to Hex Dump gives us the offset-prefixed hex data that CyberChef can parse_
-
 We copy the entire hex dump output and paste it into **[CyberChef](https://gchq.github.io/CyberChef/)**, then build the following recipe:
 
 1. **From Hexdump** - converts the Wireshark-formatted hex dump back into raw bytes
 2. **Extract Files** - scans the raw bytes for known file magic signatures and carves out any complete files it finds.
 
 ![CyberChef recipe showing From Hexdump and Extract Files, with 2 ZIP files in output](/assets/img/TryHackMe/StolenMount/7.png)
-
-_CyberChef successfully carves 2 ZIP archives from the stream data_
 
 CyberChef finds **2 files**:
 
@@ -104,8 +94,6 @@ unzip extracted_at_0x8e64.zip
 ```
 
 ![Terminal showing unzip prompting for a password to extract secrets.png](/assets/img/TryHackMe/StolenMount/8.png)
-
-_The archive contains `secrets.png` but requires a password_
 
 The archive holds a file called **`secrets.png`**. We need the password - which we strongly suspect is whatever plaintext value hashes to `90eb7723a657b6597100aafef171d9f2`.
 
@@ -145,8 +133,6 @@ unzip extracted_at_0x9113.zip
 ```
 
 ![Terminal showing secrets.png extracted, and errors on the second ZIP](/assets/img/TryHackMe/StolenMount/11.png)
-
-_`secrets.png` extracts cleanly; the second ZIP fails with corruption errors_
 
 The second archive (`extracted_at_0x9113.zip`) throws errors:
 
