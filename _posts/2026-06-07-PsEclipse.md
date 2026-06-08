@@ -4,6 +4,7 @@ title: "TryHackMe: PSEclipse Writeup"
 date: 2026-06-07
 categories: [Writeups, TryHackMe]
 tags: [Splunk, Incident-Response, DFIR, PowerShell, CyberChef]
+image: /assets/img/banners/PSEclipse.png
 ---
 
 ## Executive Summary
