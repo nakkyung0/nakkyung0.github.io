@@ -4,7 +4,6 @@ title: "TryHackMe: Investigating Windows Writeup"
 date: 2026-05-28
 categories: [Writeups, TryHackMe]
 tags: [dfir, windows, incident-response, blueteam]
-image: /assets/img/banners/InvestigatingWindows.png
 ---
 
 ## Room Overview
