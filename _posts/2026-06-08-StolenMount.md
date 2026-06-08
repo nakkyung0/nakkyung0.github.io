@@ -78,7 +78,7 @@ _Switching to Hex Dump gives us the offset-prefixed hex data that CyberChef can 
 We copy the entire hex dump output and paste it into **[CyberChef](https://gchq.github.io/CyberChef/)**, then build the following recipe:
 
 1. **From Hexdump** - converts the Wireshark-formatted hex dump back into raw bytes
-2. **Extract Files** - scans the raw bytes for known file magic signatures and carves out any complete files it finds (ZIP files start with the magic bytes `PK\x03\x04`)
+2. **Extract Files** - scans the raw bytes for known file magic signatures and carves out any complete files it finds.
 
 ![CyberChef recipe showing From Hexdump and Extract Files, with 2 ZIP files in output](/assets/img/TryHackMe/StolenMount/7.png)
 
