@@ -1,6 +1,6 @@
 ---
 title: "TryHackMe: Stolen Mount Writeup"
-date: 2026-06-09 12:00:00
+date: 2026-06-08 12:00:00
 categories: [Writeups,TryHackMe,]
 tags: [wireshark, nfs, pcap, network-forensics, cyberchef, hashcat, zip, qrcode]
 description: "Network forensics challenge involving NFS traffic analysis, file carving from a PCAP, password cracking, and QR code decoding to uncover a stolen secret."
