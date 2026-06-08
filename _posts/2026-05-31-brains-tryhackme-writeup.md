@@ -1,10 +1,11 @@
 ---
 layout: post
-title: "TryHackMe: Brains Room Writeup"
+title: "TryHackMe: Brains Writeup"
 date: 2026-05-31 15:00:00 +0200
 categories: [Writeups, TryHackMe]
 tags: [teamcity, cve-2024-27198, splunk, blue-team, red-team, purple-team, siem]
 description: "A comprehensive Purple Team walkthrough of the TryHackMe 'Brains' machine, detailing both the offensive exploitation of JetBrains TeamCity and defensive log analysis using Splunk."
+image: /assets/img/banners/Brains.png
 ---
 
 ## Executive Summary
