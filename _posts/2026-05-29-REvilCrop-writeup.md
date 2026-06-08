@@ -4,7 +4,7 @@ title: "TryHackMe: REvil Corp - Writeup"
 date: 2026-05-29 12:00:00 +0000
 categories: [Writeups, TryHackMe]
 tags: [tryhackme, redline, REvil, ransomware, incident-response]
-image: /assets/img/banners/revilcorp.webp
+image: /assets/img/banners/revil.jpg
 ---
 
 ## Scenario Overview
