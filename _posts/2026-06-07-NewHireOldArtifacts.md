@@ -1,10 +1,11 @@
 ---
 layout: post
-title: "TryHackMe NewHireOldArtifacts Writeup"
+title: "TryHackMe: NewHireOldArtifacts Writeup"
 date: 2026-06-07
 categories: [Writeups, TryHackMe]
 tags: [splunk, sysmon, threat-hunting, malware-analysis, dfir]
 description: "Walkthrough of the NewHireOldArtifacts room on TryHackMe a Splunk-based DFIR challenge investigating a compromised Finance01 endpoint using Sysmon event logs."
+image: /assets/img/banners/NewHire.png
 ---
 
 ## Overview
