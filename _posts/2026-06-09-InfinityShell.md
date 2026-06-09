@@ -88,17 +88,17 @@ http://target/CMSsite-master/img/images.php?query=d2hvYW1p
 
 ---
 
-## Log Analysis Finding the Exploit in Action
+## Log Analysis: Finding the Exploit
 
 Now we know what the shell looks like let's find evidence of it being used. Apache stores access logs in `/var/log/apache2/`. We search for requests hitting `images.php`:
-
-![Grepping Apache logs for images.php](/assets/img/TryHackMe/InfinityShell/logreview.png)
 
 ```bash
 cat access.log | grep "images.php"
 cat other_vhosts_access.log | grep "images.php"
 cat other_vhosts_access.log.1 | grep "images.php"
 ```
+![Grepping Apache logs for images.php](/assets/img/TryHackMe/InfinityShell/logreview.png)
+
 ![Extracting query values from logs](/assets/img/TryHackMe/InfinityShell/logreviewqueries.png)
 
 The rotated log file `other_vhosts_access.log.1` is where the interesting traffic lives. We can see multiple HTTP `200` (successful) responses to requests for `/CMSsite-master/img/images.php` with different `?query=` values confirming the attacker was actively using the shell.
