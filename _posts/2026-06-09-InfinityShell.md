@@ -1,6 +1,6 @@
 ---
 title: "TryHackMe: Infinity Shell Writeup"
-date: 2025-03-06
+date: 2026-06-09
 categories: [Writeups, TryHackMe,]
 tags: [web-shell, log-analysis, php, rce, forensics, apache]
 image:
